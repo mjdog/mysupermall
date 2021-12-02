@@ -4,6 +4,13 @@
       <template v-slot:center>
         <div>购物街</div>
       </template>
+      <swiper>
+        <swiper-item v-for="item in banners">
+          <a :href="item.link">
+            <img :src="item.image" />
+          </a>
+        </swiper-item>
+      </swiper>
     </nav-bar>
   </div>
 
@@ -12,10 +19,31 @@
 
 <script>
   import NavBar from 'components/common/navbar/NavBar'
+  import {getHomeMultidata} from 'network/home'
+  import {Swiper,SwiperItem} from 'components/common/swiper'
 	export default{
 		name:"Home",
     components:{
-      NavBar
+      NavBar,
+      Swiper,
+      SwiperItem
+    },
+    data(){
+      return{
+        banners:[],
+        recommends:[]
+      }
+    },
+    created() {
+      getHomeMultidata().then(res => {
+        console.log(res)
+        this.banners=res.data.data.banner.list
+        this.recommends=res.data.data.recommend.list
+        console.log(this.banners)
+      })
+    },
+    methods:{
+
     }
 	}
 </script>
