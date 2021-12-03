@@ -9,6 +9,14 @@ module.exports = {
         'views': '@/views',
       }
     }
-  }
+  },
+  // devServer:{
+  //         host: '123.157.244.6',
+  //         public:'123.157.244.6:7676',
+  //         port: 8080,
+  //         https: false,
+  //         hotOnly: false,
+  //         disableHostCheck:true,
+  //         open: true // 配置自动启动浏览器
+  //     }
 }
-
